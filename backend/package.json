@@ -1,7 +1,7 @@
 {
-  "name": "nexcart-backend",
+  "name": "shopkaro-backend",
   "version": "1.0.0",
-  "description": "Backend server for NexCart - E-Commerce and Inventory Management System",
+  "description": "Backend server for ShopKaro - E-Commerce and Inventory Management System",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
