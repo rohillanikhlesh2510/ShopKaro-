@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="mt-16 bg-black border-t border-neutral-900 text-white text-xs">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand & Purpose */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-white font-bold text-sm tracking-tight">
@@ -77,36 +77,6 @@ function Footer() {
                 <span className="text-neutral-400">
                   Transaction Mode: Simulated Development
                 </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Deployment & Architecture */}
-          <div>
-            <h4 className="text-white font-semibold mb-3 uppercase tracking-wider text-[11px]">
-              System Status
-            </h4>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-sm bg-emerald-400" />
-                <span className="text-neutral-200">Backend Port: 5000</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-sm bg-blue-400" />
-                <span className="text-neutral-200">Frontend Port: 3000</span>
-              </li>
-              <li>
-                <a
-                  href="/api/health"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white underline hover:text-neutral-200"
-                >
-                  Verify Health Endpoint (/api/health)
-                </a>
-              </li>
-              <li className="text-neutral-400 pt-1">
-                Custom Domain Ready: DNS CNAME / Reverse Proxy
               </li>
             </ul>
           </div>
