@@ -26,11 +26,11 @@ function ProductCard({ product }) {
   return (
     <div
       onClick={() => navigate(`/product/${productId}`)}
-      className="rounded-lg overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow transition-shadow flex flex-col justify-between cursor-pointer"
+      className="rounded-lg overflow-hidden bg-white border-2 border-black shadow-sm hover:shadow-xl transition-all flex flex-col justify-between cursor-pointer"
     >
       <div>
         {/* Product Image Frame */}
-        <div className="relative h-44 flex items-center justify-center p-3 bg-slate-50 dark:bg-slate-700/40 border-b border-slate-100 dark:border-slate-700 overflow-hidden">
+        <div className="relative h-44 flex items-center justify-center p-3 bg-white border-b-2 border-black overflow-hidden">
           <img
             src={imageSrc}
             alt={product.title}
@@ -44,10 +44,11 @@ function ProductCard({ product }) {
           <button
             type="button"
             onClick={handleWishlistClick}
-            className={`absolute top-2 right-2 px-2 py-1 text-xs rounded border transition-colors ${wishlistAdded
-                ? "bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-900"
-                : "bg-white/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:bg-slate-100"
-              }`}
+            className={`absolute top-2 right-2 px-2 py-1 text-xs rounded border-2 border-black font-bold transition-colors ${
+              wishlistAdded
+                ? "bg-black text-white"
+                : "bg-white text-black hover:bg-neutral-100"
+            }`}
             title="Add to Wishlist"
           >
             {wishlistAdded ? "Saved" : "Save"}
@@ -55,34 +56,35 @@ function ProductCard({ product }) {
         </div>
 
         {/* Details */}
-        <div className="p-4">
-          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+        <div className="p-4 bg-white">
+          <div className="flex items-center justify-between text-xs text-neutral-600 mb-1">
             <span className="uppercase tracking-wider font-semibold">
               {product.brand || "Standard"}
             </span>
             {product.category?.name && (
-              <span className="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-1.5 py-0.5 rounded text-[11px]">
+              <span className="bg-neutral-100 text-black border border-neutral-300 px-1.5 py-0.5 rounded text-[11px] font-semibold">
                 {product.category.name}
               </span>
             )}
           </div>
 
-          <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 line-clamp-2 mb-2 leading-snug">
+          <h3 className="text-sm font-bold text-black line-clamp-2 mb-2 leading-snug">
             {product.title}
           </h3>
 
           <div className="flex items-baseline justify-between pt-1">
-            <span className="text-base font-bold text-slate-900 dark:text-slate-100">
+            <span className="text-base font-extrabold text-black">
               ₹ {Number(product.price || 0).toLocaleString("en-IN")}
             </span>
 
             <span
-              className={`text-xs font-medium px-2 py-0.5 rounded ${isOutOfStock
-                  ? "bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-400"
+              className={`text-xs font-bold px-2 py-0.5 rounded border ${
+                isOutOfStock
+                  ? "bg-red-50 text-red-700 border-red-400"
                   : product.stock <= 5
-                    ? "bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400"
-                    : "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400"
-                }`}
+                    ? "bg-amber-50 text-amber-800 border-amber-400"
+                    : "bg-emerald-50 text-emerald-800 border-emerald-400"
+              }`}
             >
               {isOutOfStock ? "Out of Stock" : `Stock: ${product.stock}`}
             </span>
@@ -90,7 +92,7 @@ function ProductCard({ product }) {
         </div>
       </div>
 
-      <div className="p-4 pt-0">
+      <div className="p-4 pt-0 bg-white">
         <button
           type="button"
           onClick={(e) => {
@@ -98,10 +100,11 @@ function ProductCard({ product }) {
             navigate(`/product/${productId}`);
           }}
           disabled={isOutOfStock}
-          className={`w-full py-2 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors ${isOutOfStock
-              ? "bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700 text-white"
-            }`}
+          className={`w-full py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-colors border-2 ${
+            isOutOfStock
+              ? "bg-neutral-100 text-neutral-400 border-neutral-300 cursor-not-allowed"
+              : "bg-black hover:bg-neutral-800 text-white border-black"
+          }`}
         >
           {isOutOfStock ? "Unavailable" : "View Details"}
         </button>

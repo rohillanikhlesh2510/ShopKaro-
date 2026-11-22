@@ -1,19 +1,19 @@
 function Terms() {
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8 py-12">
-      <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-8 shadow-sm">
-        <div className="border-b border-slate-200 dark:border-slate-700 pb-5 mb-8">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-12 bg-white">
+      <div className="bg-white border-2 border-black rounded-lg p-8 shadow-sm">
+        <div className="border-b-2 border-black pb-5 mb-8">
+          <h1 className="text-2xl font-extrabold text-black tracking-tight">
             Terms and Conditions
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1">
             Effective Date: November 22, 2026. Applicable to all platform users.
           </p>
         </div>
 
-        <div className="space-y-6 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        <div className="space-y-6 text-sm text-neutral-800 leading-relaxed">
           <section>
-            <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100 mb-2">
+            <h2 className="text-base font-bold text-black mb-2">
               1. Acceptance of Terms
             </h2>
             <p>

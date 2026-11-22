@@ -77,18 +77,8 @@ function ProductDetail() {
 
   return (
     <div className="w-full p-6">
-      <div
-        className={`
-          flex flex-col md:flex-row gap-6 p-6 rounded-xl shadow-md
-          ${isDark ? "bg-gray-700 text-white" : "bg-white text-black"}
-        `}
-      >
-        <div
-          className={`
-            flex-1 flex justify-center items-center rounded min-h-72 p-4 overflow-hidden
-            ${isDark ? "bg-gray-600" : "bg-gray-100"}
-          `}
-        >
+      <div className="flex flex-col md:flex-row gap-8 p-8 rounded-xl shadow-md bg-white border-2 border-black text-black">
+        <div className="flex-1 flex justify-center items-center rounded-lg min-h-72 p-4 overflow-hidden bg-white border-2 border-neutral-300">
           <img
             src={
               !product.thumbnail || failedSrc === product.thumbnail
@@ -107,51 +97,35 @@ function ProductDetail() {
 
         <div className="flex-1 flex flex-col justify-between">
           <div>
-            <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
+            <h1 className="text-3xl font-extrabold text-black mb-3">{product.title}</h1>
 
-            <p
-              className={`mb-4 ${
-                isDark ? "text-gray-200" : "text-gray-600"
-              }`}
-            >
+            <p className="mb-4 text-neutral-700 leading-relaxed text-sm">
               {product.description}
             </p>
 
-            <p className="text-xl font-semibold mb-2">
+            <p className="text-2xl font-black text-black mb-3">
               ₹ {Number(product.price || 0).toLocaleString("en-IN")}
             </p>
 
-            <p
-              className={`text-sm mb-1 ${
-                isDark ? "text-gray-300" : "text-gray-500"
-              }`}
-            >
-              Brand: {product.brand || "Generic"}
+            <p className="text-sm mb-1.5 text-neutral-700">
+              <span className="font-semibold text-black">Brand:</span> {product.brand || "Generic"}
             </p>
 
             {product.category?.name && (
-              <p
-                className={`text-sm mb-1 ${
-                  isDark ? "text-gray-300" : "text-gray-500"
-                }`}
-              >
-                Category: {product.category.name}
+              <p className="text-sm mb-1.5 text-neutral-700">
+                <span className="font-semibold text-black">Category:</span> {product.category.name}
               </p>
             )}
 
             {product.seller?.name && (
-              <p
-                className={`text-sm mb-1 ${
-                  isDark ? "text-gray-300" : "text-gray-500"
-                }`}
-              >
-                Seller: {product.seller.name}
+              <p className="text-sm mb-1.5 text-neutral-700">
+                <span className="font-semibold text-black">Seller:</span> {product.seller.name}
               </p>
             )}
 
             <p
-              className={`text-sm font-semibold mb-4 ${
-                product.stock === 0 ? "text-red-500" : "text-green-600"
+              className={`text-sm font-bold mt-2 mb-6 ${
+                product.stock === 0 ? "text-red-600" : "text-emerald-700"
               }`}
             >
               {product.stock === 0
@@ -164,10 +138,10 @@ function ProductDetail() {
             <button
               onClick={handleAddToCart}
               disabled={product.stock === 0}
-              className={`flex-1 py-2 rounded text-white ${
+              className={`flex-1 py-3 rounded-md font-bold text-sm border-2 ${
                 product.stock === 0
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-500"
+                  ? "bg-neutral-100 text-neutral-400 border-neutral-300 cursor-not-allowed"
+                  : "bg-black hover:bg-neutral-800 text-white border-black transition-colors"
               }`}
             >
               {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
@@ -179,7 +153,7 @@ function ProductDetail() {
                 setIsErrorMsg(false);
                 setMessage("Added to Wishlist");
               }}
-              className="flex-1 py-2 rounded bg-green-600 text-white hover:bg-green-500"
+              className="flex-1 py-3 rounded-md font-bold text-sm bg-white hover:bg-neutral-100 text-black border-2 border-black transition-colors"
             >
               Wishlist
             </button>
@@ -187,8 +161,8 @@ function ProductDetail() {
 
           {message && (
             <p
-              className={`mt-3 font-medium ${
-                isErrorMsg ? "text-red-500" : "text-green-500"
+              className={`mt-3 font-semibold text-sm ${
+                isErrorMsg ? "text-red-600" : "text-emerald-600"
               }`}
             >
               {message}

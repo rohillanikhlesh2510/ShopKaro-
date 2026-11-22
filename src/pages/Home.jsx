@@ -82,17 +82,17 @@ function Home() {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
       {/* Catalog Header */}
-      <div className="border-b border-slate-200 dark:border-slate-800 pb-5 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="border-b-2 border-black pb-5 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-extrabold text-black tracking-tight">
             Product Catalog
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1">
             Verified inventory database with real-time stock levels and server-side pricing verification.
           </p>
         </div>
 
-        <div className="text-xs text-slate-500 dark:text-slate-400">
+        <div className="text-xs font-semibold text-black">
           {!loading && !errorMessage && (
             <span>
               Showing {products.length} of {totalCount} total items
@@ -102,7 +102,7 @@ function Home() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 mb-6 shadow-sm">
+      <div className="bg-white border-2 border-black rounded-lg p-4 mb-6 shadow-sm">
         <form onSubmit={handleSearchSubmit} className="flex flex-col md:flex-row gap-3">
           <div className="flex-1">
             <input
@@ -110,7 +110,7 @@ function Home() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by title, brand, or specifications..."
-              className="w-full px-3 py-2 text-sm rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="w-full px-3 py-2 text-sm rounded-md border-2 border-neutral-300 bg-white text-black focus:outline-none focus:border-black font-medium"
             />
           </div>
 
@@ -121,7 +121,7 @@ function Home() {
                 setSelectedCategory(e.target.value);
                 setPage(1);
               }}
-              className="px-3 py-2 text-sm rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="px-3 py-2 text-sm rounded-md border-2 border-neutral-300 bg-white text-black focus:outline-none focus:border-black font-medium"
             >
               <option value="">All Categories</option>
               {categories.map((cat) => (
@@ -137,7 +137,7 @@ function Home() {
                 setSortOption(e.target.value);
                 setPage(1);
               }}
-              className="px-3 py-2 text-sm rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="px-3 py-2 text-sm rounded-md border-2 border-neutral-300 bg-white text-black focus:outline-none focus:border-black font-medium"
             >
               <option value="">Sort: Newest</option>
               <option value="low">Price: Low to High</option>
@@ -146,7 +146,7 @@ function Home() {
 
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold transition-colors"
+              className="px-4 py-2 bg-black hover:bg-neutral-800 text-white rounded-md text-sm font-bold border-2 border-black transition-colors"
             >
               Search
             </button>
@@ -155,7 +155,7 @@ function Home() {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="px-3 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-md text-sm font-medium transition-colors"
+                className="px-3 py-2 bg-white hover:bg-neutral-100 text-black border-2 border-black rounded-md text-sm font-bold transition-colors"
               >
                 Reset
               </button>

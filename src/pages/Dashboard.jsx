@@ -261,20 +261,20 @@ function Dashboard() {
   }
 
   return (
-    <div className="w-full p-6 text-black">
-      <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
+    <div className="w-full p-6 text-black bg-white min-h-[80vh]">
+      <div className="flex flex-wrap justify-between items-center gap-4 mb-6 border-b-2 border-black pb-4">
         <div>
-          <h1 className="text-2xl font-bold dark:text-white">
+          <h1 className="text-2xl font-extrabold text-black">
             {user.role === "admin" ? "Admin Dashboard" : "Seller Dashboard"}
           </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300">
+          <p className="text-sm text-neutral-600 font-medium">
             Analytics, inventory management, products, and audit logs
           </p>
         </div>
 
         <button
           onClick={loadDashboardData}
-          className="px-4 py-1.5 rounded bg-blue-600 text-white text-sm hover:bg-blue-500"
+          className="px-4 py-2 rounded-md bg-black text-white font-bold text-xs hover:bg-neutral-800 border-2 border-black transition-colors"
         >
           Refresh Data
         </button>
@@ -293,10 +293,10 @@ function Dashboard() {
           <button
             key={item.key}
             onClick={() => setTab(item.key)}
-            className={`px-4 py-2 rounded font-medium text-sm ${
+            className={`px-4 py-2 rounded-md font-bold text-sm border-2 transition-colors ${
               tab === item.key
-                ? "bg-blue-700 text-white"
-                : "bg-white text-black border border-gray-300 hover:bg-gray-100"
+                ? "bg-black text-white border-black"
+                : "bg-white text-black border-black hover:bg-neutral-100"
             }`}
           >
             {item.label}
@@ -317,7 +317,7 @@ function Dashboard() {
       )}
 
       {loading ? (
-        <p className="text-center py-8 dark:text-white">
+        <p className="text-center py-8 text-black">
           Loading dashboard data...
         </p>
       ) : (
@@ -325,7 +325,7 @@ function Dashboard() {
           {tab === "overview" && (
             <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="p-4 rounded-xl shadow bg-white dark:bg-gray-200">
+                <div className="p-4 rounded-xl shadow bg-white border-2 border-black">
                   <p className="text-xs text-gray-600 uppercase font-semibold">
                     Total Revenue
                   </p>
@@ -334,7 +334,7 @@ function Dashboard() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl shadow bg-white dark:bg-gray-200">
+                <div className="p-4 rounded-xl shadow bg-white border-2 border-black">
                   <p className="text-xs text-gray-600 uppercase font-semibold">
                     Total Orders
                   </p>
@@ -343,7 +343,7 @@ function Dashboard() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl shadow bg-white dark:bg-gray-200">
+                <div className="p-4 rounded-xl shadow bg-white border-2 border-black">
                   <p className="text-xs text-gray-600 uppercase font-semibold">
                     Inventory Value
                   </p>
@@ -355,7 +355,7 @@ function Dashboard() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl shadow bg-white dark:bg-gray-200">
+                <div className="p-4 rounded-xl shadow bg-white border-2 border-black">
                   <p className="text-xs text-gray-600 uppercase font-semibold">
                     Low / Out of Stock
                   </p>
@@ -367,7 +367,7 @@ function Dashboard() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-5 rounded-xl shadow bg-white dark:bg-gray-200">
+                <div className="p-5 rounded-xl shadow bg-white border-2 border-black">
                   <h2 className="text-lg font-bold mb-3">
                     Best-Selling Products
                   </h2>
@@ -395,7 +395,7 @@ function Dashboard() {
                   )}
                 </div>
 
-                <div className="p-5 rounded-xl shadow bg-white dark:bg-gray-200">
+                <div className="p-5 rounded-xl shadow bg-white border-2 border-black">
                   <h2 className="text-lg font-bold mb-3">
                     Inventory by Category
                   </h2>
@@ -430,7 +430,7 @@ function Dashboard() {
           )}
 
           {tab === "inventory" && (
-            <div className="p-5 rounded-xl shadow bg-white dark:bg-gray-200 space-y-3">
+            <div className="p-5 rounded-xl shadow bg-white border-2 border-black space-y-3">
               <h2 className="text-lg font-bold mb-2">
                 Inventory Levels & Stock Control
               </h2>
@@ -489,7 +489,7 @@ function Dashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <form
                 onSubmit={handleSaveProduct}
-                className="p-5 rounded-xl shadow bg-white dark:bg-gray-200 space-y-3"
+                className="p-5 rounded-xl shadow bg-white border-2 border-black space-y-3"
               >
                 <h2 className="text-lg font-bold">
                   {editingProductId ? "Edit Product" : "Add New Product"}
@@ -616,7 +616,7 @@ function Dashboard() {
                 </div>
               </form>
 
-              <div className="p-5 rounded-xl shadow bg-white dark:bg-gray-200 space-y-3">
+              <div className="p-5 rounded-xl shadow bg-white border-2 border-black space-y-3">
                 <h2 className="text-lg font-bold">
                   Manage Products ({inventoryProducts.length})
                 </h2>
@@ -654,7 +654,7 @@ function Dashboard() {
           )}
 
           {tab === "logs" && (
-            <div className="p-5 rounded-xl shadow bg-white dark:bg-gray-200 space-y-3">
+            <div className="p-5 rounded-xl shadow bg-white border-2 border-black space-y-3">
               <h2 className="text-lg font-bold">Recent Inventory Logs</h2>
               {logs.length === 0 ? (
                 <p className="text-sm text-gray-600">No inventory logs yet.</p>
@@ -704,7 +704,7 @@ function Dashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <form
                 onSubmit={handleCreateCategory}
-                className="p-5 rounded-xl shadow bg-white dark:bg-gray-200 space-y-3"
+                className="p-5 rounded-xl shadow bg-white border-2 border-black space-y-3"
               >
                 <h2 className="text-lg font-bold">Add Category</h2>
                 <input
@@ -736,7 +736,7 @@ function Dashboard() {
                 </button>
               </form>
 
-              <div className="p-5 rounded-xl shadow bg-white dark:bg-gray-200 space-y-2">
+              <div className="p-5 rounded-xl shadow bg-white border-2 border-black space-y-2">
                 <h2 className="text-lg font-bold">Existing Categories</h2>
                 {categories.map((cat) => (
                   <div

@@ -56,23 +56,23 @@ function Login() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm p-6 sm:p-8">
+    <div className="min-h-[80vh] flex items-center justify-center p-4 bg-white">
+      <div className="w-full max-w-md bg-white border-2 border-black rounded-lg shadow-lg p-6 sm:p-8">
         {/* Brand Identification */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded bg-blue-600 text-white font-bold text-base mb-2">
-            NC
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded bg-black text-white font-black text-lg mb-2 border-2 border-black">
+            SK
           </div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+          <h2 className="text-2xl font-extrabold text-black tracking-tight">
             ShopKaro Account Access
           </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1">
             Sign in to manage orders, catalog products, and review store activity.
           </p>
         </div>
 
         {/* Tab Selection */}
-        <div className="flex border-b border-slate-200 dark:border-slate-700 mb-6">
+        <div className="flex border-b-2 border-black mb-6">
           <button
             type="button"
             onClick={() => {
@@ -80,10 +80,10 @@ function Login() {
               setErrorMessage("");
               setSuccessMessage("");
             }}
-            className={`flex-1 py-2 text-xs font-semibold uppercase tracking-wider transition-colors border-b-2 ${
+            className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
               mode === "login"
-                ? "border-blue-600 text-blue-600 dark:text-blue-400"
-                : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400"
+                ? "border-black text-black font-extrabold"
+                : "border-transparent text-neutral-500 hover:text-black"
             }`}
           >
             Sign In
@@ -95,10 +95,10 @@ function Login() {
               setErrorMessage("");
               setSuccessMessage("");
             }}
-            className={`flex-1 py-2 text-xs font-semibold uppercase tracking-wider transition-colors border-b-2 ${
+            className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
               mode === "register"
-                ? "border-blue-600 text-blue-600 dark:text-blue-400"
-                : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400"
+                ? "border-black text-black font-extrabold"
+                : "border-transparent text-neutral-500 hover:text-black"
             }`}
           >
             Create Account
@@ -107,13 +107,13 @@ function Login() {
 
         {/* Error / Success Feedback */}
         {errorMessage && (
-          <div className="mb-4 p-3 rounded bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-xs font-medium">
+          <div className="mb-4 p-3 rounded bg-red-50 border border-red-300 text-red-700 text-xs font-semibold">
             {errorMessage}
           </div>
         )}
 
         {successMessage && (
-          <div className="mb-4 p-3 rounded bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 text-emerald-700 dark:text-emerald-300 text-xs font-medium">
+          <div className="mb-4 p-3 rounded bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-semibold">
             {successMessage}
           </div>
         )}
@@ -122,7 +122,7 @@ function Login() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "register" && (
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-black mb-1">
                 Full Name
               </label>
               <input
@@ -131,13 +131,13 @@ function Login() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="First and last name"
-                className="w-full px-3 py-2 text-sm rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                className="w-full px-3 py-2 text-sm rounded-md border-2 border-neutral-300 bg-white text-black focus:outline-none focus:border-black font-medium"
               />
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-black mb-1">
               Email Address
             </label>
             <input
@@ -146,19 +146,19 @@ function Login() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="user@ShopKaro.local"
-              className="w-full px-3 py-2 text-sm rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="w-full px-3 py-2 text-sm rounded-md border-2 border-neutral-300 bg-white text-black focus:outline-none focus:border-black font-medium"
             />
           </div>
 
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              <label className="text-xs font-bold uppercase tracking-wider text-black">
                 Password
               </label>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-[11px] text-blue-600 dark:text-blue-400 hover:underline"
+                className="text-[11px] text-black font-semibold hover:underline"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
@@ -170,21 +170,21 @@ function Login() {
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               placeholder="Minimum 6 characters"
-              className="w-full px-3 py-2 text-sm rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="w-full px-3 py-2 text-sm rounded-md border-2 border-neutral-300 bg-white text-black focus:outline-none focus:border-black font-medium"
             />
           </div>
 
           {mode === "register" && (
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-black mb-1">
                 Account Type
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <label
-                  className={`p-3 rounded-md border text-center cursor-pointer transition-colors ${
+                  className={`p-3 rounded-md border-2 text-center cursor-pointer transition-colors ${
                     form.role === "customer"
-                      ? "border-blue-600 bg-blue-50 dark:bg-slate-700/60"
-                      : "border-slate-300 dark:border-slate-600"
+                      ? "border-black bg-neutral-100 font-bold"
+                      : "border-neutral-300"
                   }`}
                 >
                   <input
@@ -195,19 +195,19 @@ function Login() {
                     onChange={(e) => setForm({ ...form, role: e.target.value })}
                     className="sr-only"
                   />
-                  <span className="block text-xs font-bold text-slate-900 dark:text-slate-100">
+                  <span className="block text-xs font-bold text-black">
                     Customer
                   </span>
-                  <span className="block text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                  <span className="block text-[11px] text-neutral-600 mt-0.5">
                     Browse & checkout
                   </span>
                 </label>
 
                 <label
-                  className={`p-3 rounded-md border text-center cursor-pointer transition-colors ${
+                  className={`p-3 rounded-md border-2 text-center cursor-pointer transition-colors ${
                     form.role === "seller"
-                      ? "border-blue-600 bg-blue-50 dark:bg-slate-700/60"
-                      : "border-slate-300 dark:border-slate-600"
+                      ? "border-black bg-neutral-100 font-bold"
+                      : "border-neutral-300"
                   }`}
                 >
                   <input
@@ -218,10 +218,10 @@ function Login() {
                     onChange={(e) => setForm({ ...form, role: e.target.value })}
                     className="sr-only"
                   />
-                  <span className="block text-xs font-bold text-slate-900 dark:text-slate-100">
+                  <span className="block text-xs font-bold text-black">
                     Seller
                   </span>
-                  <span className="block text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                  <span className="block text-[11px] text-neutral-600 mt-0.5">
                     Manage inventory
                   </span>
                 </label>
@@ -232,7 +232,7 @@ function Login() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold uppercase tracking-wider transition-colors disabled:opacity-60"
+            className="w-full py-2.5 rounded-md bg-black hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider border-2 border-black transition-colors disabled:opacity-60"
           >
             {isSubmitting
               ? "Authenticating..."
@@ -243,11 +243,11 @@ function Login() {
         </form>
 
         {/* Development Test Accounts Section */}
-        <div className="mt-6 pt-5 border-t border-slate-200 dark:border-slate-700 text-xs">
-          <p className="font-semibold text-slate-700 dark:text-slate-300 mb-2">
+        <div className="mt-6 pt-5 border-t-2 border-neutral-200 text-xs">
+          <p className="font-bold text-black mb-2">
             Local Development Accounts:
           </p>
-          <div className="space-y-1 font-mono text-[11px] text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700">
+          <div className="space-y-1 font-mono text-[11px] text-neutral-800 bg-neutral-100 p-3 rounded border border-neutral-300">
             <div>Customer: customer1@ShopKaro.local / Customer@123</div>
             <div>Seller: seller1@ShopKaro.local / Seller@123</div>
             <div>Admin: admin@ShopKaro.local / Admin@123</div>
