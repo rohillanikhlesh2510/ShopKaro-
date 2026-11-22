@@ -16,21 +16,12 @@ function Navbar() {
   } = useContext(AuthContext);
   const { cartItems } = useContext(CartContext);
 
-  const [dark, setDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const currentRouteKey = location.key || `${location.pathname}${location.search}`;
   const [openRouteKey, setOpenRouteKey] = useState(null);
   const showAlerts = openRouteKey === currentRouteKey;
   const alertsRef = useRef(null);
-
-  const toggleTheme = () => setDark((prev) => !prev);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) root.classList.add("dark");
-    else root.classList.remove("dark");
-  }, [dark]);
 
   useEffect(() => {
     if (!showAlerts) return undefined;
@@ -243,14 +234,6 @@ function Navbar() {
                 Sign In
               </Link>
             )}
-
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="px-2.5 py-1.5 rounded-md bg-slate-800 border border-slate-700 text-slate-300 hover:text-white text-xs font-medium"
-            >
-              {dark ? "Light" : "Dark"}
-            </button>
           </div>
 
           {/* Mobile menu toggle */}
@@ -332,12 +315,6 @@ function Navbar() {
                   Sign In
                 </Link>
               )}
-              <button
-                onClick={toggleTheme}
-                className="px-2 py-1 bg-slate-800 text-slate-300 rounded text-xs"
-              >
-                {dark ? "Light" : "Dark"}
-              </button>
             </div>
           </div>
         )}
