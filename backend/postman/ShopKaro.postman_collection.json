@@ -433,6 +433,97 @@
           }
         }
       ]
+    },
+    {
+      "name": "Negative, Auth & Boundary Tests",
+      "item": [
+        {
+          "name": "1. Validation Failure - Missing Fields (Expected 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\"\n}"
+            },
+            "url": "{{baseUrl}}/api/auth/register"
+          }
+        },
+        {
+          "name": "2. Validation Failure - Invalid Email Format (Expected 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"invalid-email-string\",\n  \"password\": \"Password123\"\n}"
+            },
+            "url": "{{baseUrl}}/api/auth/login"
+          }
+        },
+        {
+          "name": "3. Unauthenticated - Missing Bearer Token (Expected 401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/auth/me"
+          }
+        },
+        {
+          "name": "4. Unauthorized Role - Customer accessing Admin Orders (Expected 403)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/orders/admin"
+          }
+        },
+        {
+          "name": "5. Resource Not Found - Invalid Product ID (Expected 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/products/000000000000000000000000"
+          }
+        },
+        {
+          "name": "6. Business Rule - Checkout With Empty Cart (Expected 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingAddress\": {\n    \"name\": \"Test User\",\n    \"email\": \"customer1@ShopKaro.local\",\n    \"address\": \"123 Test Street\"\n  },\n  \"paymentMethod\": \"cash\"\n}"
+            },
+            "url": "{{baseUrl}}/api/orders"
+          }
+        },
+        {
+          "name": "7. Business Rule - Modify Product Owned By Another Seller (Expected 403)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 9999\n}"
+            },
+            "url": "{{baseUrl}}/api/products/{{productId}}"
+          }
+        },
+        {
+          "name": "8. Boundary Case - Cancel Non-Existent or Delivered Order (Expected 400 or 404)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/orders/{{orderId}}/cancel"
+          }
+        }
+      ]
     }
   ]
 }

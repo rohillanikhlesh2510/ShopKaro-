@@ -17,12 +17,19 @@ const analyticsRoutes = require("./routes/analyticsRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const userRoutes = require("./routes/userRoutes");
 const wishlistRoutes = require("./routes/wishlistRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
 const httpServer = http.createServer(app);
+
+// Request Logger Middleware
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  next();
+});
 
 // Middleware
 app.use(
@@ -62,6 +69,10 @@ app.get("/api/health", (req, res) => {
     database: dbStatus,
   });
 });
+
+// 404 & Centralized Error Handling Middleware
+app.use(notFound);
+app.use(errorHandler);
 
 // Initialize Socket.IO with JWT authentication
 initSocket(httpServer);
